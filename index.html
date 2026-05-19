@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back - Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <div class="illustration-side">
+            <svg class="illustration-svg" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 250 C60 140, 160 110, 160 110" stroke="#f0eae1" stroke-width="2" fill="none"/>
+                <path d="M120 250 A 50 50 0 0 1 220 250" fill="#f5ede2" opacity="0.7"/>
+                <path d="M200 250 L200 130 A 45 45 0 0 1 290 130 L290 250" stroke="#8c8275" stroke-width="1" fill="none"/>
+                
+                <path d="M190 190 Q205 180 220 190 Q235 180 245 195" stroke="#8c8275" stroke-width="1"/>
+                <path d="M240 140 Q255 130 270 140 Q285 130 295 145" stroke="#8c8275" stroke-width="1"/>
+                
+                <line x1="50" y1="250" x2="350" y2="250" stroke="#8c8275" stroke-width="1"/>
+                
+                <path d="M70 250 L70 210 Q70 200 80 200 L80 200 Q90 200 90 210 L90 250 Z" fill="#f5ede2" stroke="#8c8275" stroke-width="1"/>
+                <line x1="80" y1="200" x2="80" y2="120" stroke="#8c8275" stroke-width="1"/>
+                <path d="M80 170 Q60 160 62 145 Q75 155 80 170" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+                <path d="M80 150 Q100 140 98 125 Q85 135 80 150" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+                <path d="M80 130 Q60 120 62 105 Q75 115 80 130" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+                <path d="M80 110 Q90 95 80 95 Q70 95 80 110" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+
+                <rect x="110" y="215" width="30" height="35" rx="6" fill="#82947e" />
+                <path d="M140 222 C148 222 148 238 140 238" stroke="#8c8275" stroke-width="1.5" fill="none"/>
+                <path d="M125 228 Q120 225 125 222 Q130 225 125 228" fill="white" opacity="0.3"/> <path d="M120 205 Q123 195 120 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+                <path d="M128 205 Q131 195 128 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+
+                <path d="M140 248 L200 248 L170 248 Z" stroke="#8c8275" stroke-width="1"/> <path d="M152 248 L210 248 L207 252 L145 252 Z" fill="#e8e2da" stroke="#8c8275" stroke-width="1"/>
+                <path d="M210 248 L175 175 L245 175 L275 248 Z" fill="#fdfcfb" stroke="#8c8275" stroke-width="1"/>
+                <circle cx="225" cy="210" r="4" stroke="#8c8275" stroke-width="1" fill="none"/>
+            </svg>
+        </div>
+
+        <div class="form-side">
+            <div class="form-wrapper">
+                
+                <div class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22C12 22 12 13 19 10C12 9 12 2 12 2C12 2 12 9 5 10C12 13 12 22 12 22Z"/>
+                        <path d="M12 10L12 22" stroke-dasharray="2 2"/>
+                    </svg>
+                </div>
+
+                <h2>Welcome back</h2>
+                <p class="subtitle">Sign in to continue</p>
+
+                <form action="#">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" placeholder="Email or username" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                        <i class="fa-regular fa-eye toggle-password"></i>
+                    </div>
+
+                    <div class="extra-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Sign in</button>
+
+                    <div class="separator">or</div>
+
+                    <button class="btn-google">
+                        <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="Google Logo">
+                        Continue with Google
+                    </button>
+
+                    <div class="signup-text">
+                        Don't have an account? <a href="#">Sign up</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+
+:root {
+    --bg-color: #f7f5f2;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-muted: #7e7e7e;
+    --accent-green: #82947e;
+    --accent-green-hover: #6e806a;
+    --input-border: #e2e2e2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor Principal */
+.login-container {
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    /* Sombra más intensa y difuminada para dar efecto de cercanía/profundidad */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); 
+    display: flex;
+    width: 1150px; /* Subió de 1000px a 1150px */
+    max-width: 95%; /* Deja un margen pequeño en los bordes */
+    min-height: 680px; /* Subió de 600px a 680px */
+    overflow: hidden;
+    /* Suavizado de escalado */
+    transition: transform 0.3s ease;
+}
+
+/* Sección Izquierda: Ilustración */
+.illustration-side {
+    flex: 1;
+    background-color: #faf8f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 40px;
+}
+
+/* Contenedor SVG para recrear la ilustración minimalista */
+.illustration-svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+/* Sección Derecha: Formulario */
+.form-side {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px; /* Subió de 360px a 400px */
+}
+/* Logo de hojitas */
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.logo svg {
+    width: 40px;
+    height: auto;
+    fill: none;
+    stroke: var(--accent-green);
+    stroke-width: 1.5;
+}
+
+/* Encabezados */
+.form-side h2 {
+    color: var(--text-main);
+    font-size: 32px; /* Subió de 28px a 32px */
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.form-side .subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* Campos de entrada (Inputs) */
+.input-group {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.input-group .toggle-password {
+    left: auto;
+    right: 16px;
+    cursor: pointer;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    color: var(--text-main);
+}
+
+.input-group input:focus {
+    border-color: var(--accent-green);
+}
+
+.input-group input::placeholder {
+    color: #b5b5b5;
+}
+
+/* Opciones extras (Remember me / Forgot) */
+.extra-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.remember-me input {
+    margin-right: 8px;
+    accent-color: var(--accent-green);
+}
+
+.forgot-password {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Botones */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-green-hover);
+}
+
+/* Separador "or" */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.separator:not(:empty)::before { margin-right: .5em; }
+.separator:not(:empty)::after { margin-left: .5em; }
+
+/* Botón de Google */
+.btn-google {
+    width: 100%;
+    padding: 14px;
+    background-color: white;
+    color: var(--text-main);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 30px;
+}
+
+.btn-google:hover {
+    background-color: #fafafa;
+}
+
+.btn-google img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Footer de registro */
+.signup-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.signup-text a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividad para pantallas móviles */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .illustration-side {
+        display: none; /* Se oculta la ilustración en móviles para priorizar el login */
+    }
+    .form-side {
+        padding: 40px 20px;
+    }
+}
