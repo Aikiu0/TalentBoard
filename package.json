@@ -1,0 +1,20 @@
+{
+"name": "talentboard",
+"private": true,
+"workspaces": ["apps/*", "packages/*"],
+"scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\""
+},
+"devDependencies": {
+    "turbo": "latest",
+    "prettier": "^3.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0"
+},
+"lint-staged": {
+    "**/*.{ts,tsx,js,jsx,json,md}": ["prettier --write"]
+},
+"engines": { "node": ">=18.0.0" }
+}

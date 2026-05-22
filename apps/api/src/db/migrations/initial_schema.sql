@@ -1,0 +1,8 @@
+-- Migracion 001 - Esquema inicial TalentBoard
+-- Ejecutada en Supabase SQL Editor
+-- Fecha: 2026-05-22
+-- Tablas creadas:
+--   usuarios, habilidades, carreras, categorias_habilidad
+--   perfiles_egresado, perfiles_empresa
+--   egresado_habilidades, vacantes, postulaciones
+--   historial_estados, notificaciones, sesiones, configuracion
