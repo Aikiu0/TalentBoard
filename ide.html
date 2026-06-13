@@ -1,150 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asesorías</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <title>Dashboard</title>
+
     <link rel="stylesheet" href="ide.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
+
 <body>
 
-<div class="app-container">
+    <div class="container">
 
-    <!-- ── Sidebar ── -->
-    <aside class="sidebar">
+        <!-- MENU -->
 
-        <!-- Avatar -->
-        <div class="sidebar-avatar">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/>
-            </svg>
-        </div>
+        <aside class="sidebar">
 
-        <!-- Nav -->
-        <ul class="sidebar-nav">
-            <li>
-                <a href="#" class="active">
-                    Asesorías <span class="chevron">›</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Solicitudes <span class="chevron">›</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Perfil <span class="chevron">›</span>
-                </a>
-            </li>
-        </ul>
+            <div class="profile">
 
-        <!-- Logout -->
-        <div class="sidebar-logout">
-            <button class="btn-logout" title="Cerrar sesión">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </button>
-        </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Perfil">
 
-    </aside>
+            </div>
 
-    <!-- ── Main ── -->
-    <main class="main-content">
+            <div class="menu">
 
-        <!-- Asesorías -->
-        <div class="section-card">
-            <p class="section-title">Asesorías</p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Modalidad</th>
-                        <th>Fecha</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>García, L.</td>
-                        <td>Virtual</td>
-                        <td>10 jun 2025</td>
-                        <td>Activa</td>
-                    </tr>
-                    <tr>
-                        <td>Martínez, R.</td>
-                        <td>Presencial</td>
-                        <td>11 jun 2025</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    <tr>
-                        <td>López, A.</td>
-                        <td>Virtual</td>
-                        <td>12 jun 2025</td>
-                        <td>Finalizada</td>
-                    </tr>
-                    <tr>
-                        <td>Torres, M.</td>
-                        <td>Presencial</td>
-                        <td>13 jun 2025</td>
-                        <td>Activa</td>
-                    </tr>
-                    <tr>
-                        <td>Ramírez, P.</td>
-                        <td>Virtual</td>
-                        <td>14 jun 2025</td>
-                        <td>Cancelada</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <button><i class="fa-solid fa-chevron-right"></i></button>
 
-        <!-- Mis asesorías -->
-        <div class="section-card">
-            <p class="section-title">Mis asesorías</p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Modalidad</th>
-                        <th>Fecha</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Hernández, C.</td>
-                        <td>Virtual</td>
-                        <td>08 jun 2025</td>
-                        <td>Finalizada</td>
-                    </tr>
-                    <tr>
-                        <td>Jiménez, E.</td>
-                        <td>Presencial</td>
-                        <td>09 jun 2025</td>
-                        <td>Activa</td>
-                    </tr>
-                    <tr>
-                        <td>Morales, F.</td>
-                        <td>Virtual</td>
-                        <td>10 jun 2025</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    <tr>
-                        <td>Reyes, G.</td>
-                        <td>Presencial</td>
-                        <td>11 jun 2025</td>
-                        <td>Finalizada</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <button><i class="fa-solid fa-chevron-right"></i></button>
 
-    </main>
+                <button><i class="fa-solid fa-chevron-right"></i></button>
 
-</div>
+            </div>
+
+            <div class="logout">
+
+                <button>
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTENIDO -->
+
+        <main class="content">
+
+            <section>
+
+                <h2>Asesorías</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Horario</th>
+                            <th>Estado</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Juan</td>
+                            <td>Redes</td>
+                            <td>10:00</td>
+                            <td>Libre</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Ana</td>
+                            <td>Java</td>
+                            <td>12:00</td>
+                            <td>Libre</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Carlos</td>
+                            <td>Web</td>
+                            <td>2:00</td>
+                            <td>Libre</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+            <section>
+
+                <h2>Mis asesorías</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Horario</th>
+                            <th>Estado</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Pedro</td>
+                            <td>POO</td>
+                            <td>8:00</td>
+                            <td>Activa</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>María</td>
+                            <td>BD</td>
+                            <td>11:00</td>
+                            <td>Activa</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Sofía</td>
+                            <td>Redes</td>
+                            <td>1:00</td>
+                            <td>Activa</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
 
 </body>
+
 </html>
