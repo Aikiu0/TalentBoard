@@ -1,0 +1,97 @@
+<!-- ====================================================
+     VISTA: Dashboard CANDIDATO (persona)
+     Secciones internas: buscar vacantes, mis postulaciones, perfil
+     ==================================================== -->
+<div class="layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg>
+            <span>TalentBoard</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-seccion="buscar">
+                <i class="fa-solid fa-magnifying-glass"></i><span>Buscar vacantes</span>
+            </button>
+            <button class="nav-item" data-seccion="postulaciones">
+                <i class="fa-solid fa-file-lines"></i><span>Mis postulaciones</span>
+            </button>
+            <button class="nav-item" data-seccion="perfil">
+                <i class="fa-solid fa-user"></i><span>Perfil</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="nav-item" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i><span>Cerrar sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== CONTENIDO ===== -->
+    <main class="content">
+
+        <!-- ---------- SECCIÓN: BUSCAR VACANTES ---------- -->
+        <section id="sec-buscar">
+            <div class="content-header">
+                <h1 id="saludo-candidato">¡Hola! 👋</h1>
+                <p>Encuentra la oportunidad ideal para ti.</p>
+            </div>
+
+            <div class="search-bar">
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarVacante" placeholder="Cargo, palabra clave o empresa">
+                </div>
+                <button class="btn-primary" id="btnBuscar">Buscar</button>
+            </div>
+
+            <div id="listaVacantes" class="vacancy-list">
+                <div class="loading">Cargando vacantes…</div>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: MIS POSTULACIONES ---------- -->
+        <section id="sec-postulaciones" style="display:none;">
+            <div class="content-header">
+                <h1>Mis postulaciones</h1>
+                <p>Revisa el estado de las vacantes a las que te postulaste.</p>
+            </div>
+            <div id="listaPostulaciones" class="vacancy-list">
+                <div class="loading">Cargando…</div>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: PERFIL ---------- -->
+        <section id="sec-perfil" style="display:none;">
+            <div class="content-header">
+                <h1>Mi perfil</h1>
+                <p>Gestiona tu información personal y profesional.</p>
+            </div>
+
+            <div class="panel">
+                <h3>Información personal</h3>
+                <form id="formPerfilCandidato">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Nombre completo</label>
+                            <input type="text" id="perfil-nombre" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-field">
+                            <label>Especialidad</label>
+                            <input type="text" id="perfil-especialidad" placeholder="Ej. Diseñador UX/UI">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Correo</label>
+                        <input type="email" id="perfil-correo" disabled>
+                    </div>
+                    <button type="submit" class="btn-primary">Guardar cambios</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+</div>

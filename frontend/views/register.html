@@ -1,0 +1,390 @@
+<!-- ====================================================
+     VISTA: Register
+     3 estados:
+       1) Selección de rol (tarjetas Empresa / Persona)
+       2) Formulario Persona (candidato)
+       3) Formulario Empresa
+
+     NOTA: Las funciones se registran en window y la vista se
+     auto-inicializa, para que funcione aunque el router no
+     ejecute scripts de innerHTML.
+     ==================================================== -->
+<div class="auth-container">
+
+    <!-- LEFT: Ilustración -->
+    <div class="illustration-side">
+        <svg class="illustration-svg" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="50" y1="250" x2="350" y2="250" stroke="#8c8275" stroke-width="1"/>
+            <path d="M70 250 L70 210 Q70 200 80 200 L80 200 Q90 200 90 210 L90 250 Z" fill="#f5ede2" stroke="#8c8275" stroke-width="1"/>
+            <line x1="80" y1="200" x2="80" y2="120" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 170 Q60 160 62 145 Q75 155 80 170" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 150 Q100 140 98 125 Q85 135 80 150" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 130 Q60 120 62 105 Q75 115 80 130" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 110 Q90 95 80 95 Q70 95 80 110" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <rect x="110" y="215" width="30" height="35" rx="6" fill="#82947e"/>
+            <path d="M140 222 C148 222 148 238 140 238" stroke="#8c8275" stroke-width="1.5" fill="none"/>
+            <path d="M120 205 Q123 195 120 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+            <path d="M128 205 Q131 195 128 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+            <rect x="155" y="185" width="120" height="65" rx="5" fill="#f5ede2" stroke="#8c8275" stroke-width="1"/>
+            <rect x="163" y="192" width="104" height="52" rx="3" fill="#fdfcfb"/>
+            <rect x="170" y="198" width="42" height="5" rx="2" fill="#e0ddd8"/>
+            <rect x="218" y="198" width="42" height="5" rx="2" fill="#e0ddd8"/>
+            <rect x="170" y="210" width="90" height="5" rx="2" fill="#e0ddd8"/>
+            <rect x="170" y="222" width="90" height="5" rx="2" fill="#e0ddd8"/>
+            <rect x="170" y="234" width="90" height="7" rx="3" fill="#82947e" opacity="0.7"/>
+            <path d="M152 250 L280 250 L275 255 L157 255 Z" fill="#e8e2da" stroke="#8c8275" stroke-width="1"/>
+            <path d="M200 250 L200 130 A 45 45 0 0 1 290 130 L290 250" stroke="#c8c3bb" stroke-width="1" fill="none" opacity="0.5"/>
+            <rect x="295" y="110" width="60" height="70" rx="8" fill="#fdfcfb" stroke="#e0ddd8" stroke-width="1"/>
+            <line x1="310" y1="125" x2="345" y2="125" stroke="#e0ddd8" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="310" y1="138" x2="345" y2="138" stroke="#e0ddd8" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="310" y1="151" x2="330" y2="151" stroke="#e0ddd8" stroke-width="1.5" stroke-linecap="round"/>
+            <polyline points="302,125 305,128 310,121" stroke="#82947e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="302,138 305,141 310,134" stroke="#82947e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <!-- RIGHT: Contenido -->
+    <div class="form-side">
+        <div class="form-wrapper">
+
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/>
+                </svg>
+            </div>
+
+            <!-- ============ ESTADO 1: Selección de rol ============ -->
+            <div id="step-role">
+                <h2>Create account</h2>
+                <p class="subtitle">¿Cómo vas a usar TalentBoard?</p>
+
+                <div class="role-cards">
+                    <button type="button" class="role-card" data-rol="candidato">
+                        <span class="role-icon"><i class="fa-solid fa-user"></i></span>
+                        <span class="role-info">
+                            <span class="role-title">Soy una persona</span>
+                            <span class="role-desc">Busco empleo y quiero postularme a vacantes</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-right role-arrow"></i>
+                    </button>
+
+                    <button type="button" class="role-card" data-rol="empresa">
+                        <span class="role-icon"><i class="fa-solid fa-building"></i></span>
+                        <span class="role-info">
+                            <span class="role-title">Soy una empresa</span>
+                            <span class="role-desc">Quiero contratar personal y publicar vacantes</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-right role-arrow"></i>
+                    </button>
+                </div>
+
+                <div class="switch-text">
+                    Already have an account? <a onclick="navegarA('login')">Sign in</a>
+                </div>
+            </div>
+
+            <!-- ============ ESTADO 2: Formulario PERSONA ============ -->
+            <div id="step-candidato" style="display:none;">
+                <button type="button" class="back-link btn-volver">
+                    <i class="fa-solid fa-arrow-left"></i> Volver
+                </button>
+                <h2>Crear cuenta</h2>
+                <p class="subtitle">Regístrate como persona</p>
+
+                <form id="formCandidato" novalidate>
+                    <div class="row">
+                        <div class="input-group">
+                            <i class="fa-regular fa-user field-icon"></i>
+                            <input type="text" id="cand-nombre" placeholder="Nombre" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-regular fa-user field-icon"></i>
+                            <input type="text" id="cand-apellido" placeholder="Apellido" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope field-icon"></i>
+                        <input type="email" id="cand-correo" placeholder="Correo electrónico" required>
+                    </div>
+                    <p class="error-msg" id="cand-correo-error">Ingresa un email válido.</p>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="cand-password" placeholder="Contraseña" required>
+                        <i class="fa-solid fa-eye toggle-password" data-target="cand-password"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="cand-password2" placeholder="Confirmar contraseña" required>
+                        <i class="fa-solid fa-eye toggle-password" data-target="cand-password2"></i>
+                    </div>
+                    <p class="error-msg" id="cand-pass-error">Las contraseñas no coinciden.</p>
+
+                    <div class="terms">
+                        <input type="checkbox" id="cand-terms">
+                        <label for="cand-terms">
+                            Acepto los <a href="#">Términos</a> y la <a href="#">Política de Privacidad</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Crear cuenta</button>
+                </form>
+            </div>
+
+            <!-- ============ ESTADO 3: Formulario EMPRESA ============ -->
+            <div id="step-empresa" style="display:none;">
+                <button type="button" class="back-link btn-volver">
+                    <i class="fa-solid fa-arrow-left"></i> Volver
+                </button>
+                <h2>Crear cuenta</h2>
+                <p class="subtitle">Regístrate como empresa</p>
+
+                <form id="formEmpresa" novalidate>
+                    <div class="input-group">
+                        <i class="fa-solid fa-building field-icon"></i>
+                        <input type="text" id="emp-nombre" placeholder="Nombre de la empresa" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-align-left field-icon"></i>
+                        <textarea id="emp-descripcion" placeholder="Descripción breve de la empresa"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope field-icon"></i>
+                        <input type="email" id="emp-correo" placeholder="Correo electrónico" required>
+                    </div>
+                    <p class="error-msg" id="emp-correo-error">Ingresa un email válido.</p>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="emp-password" placeholder="Contraseña" required>
+                        <i class="fa-solid fa-eye toggle-password" data-target="emp-password"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="emp-password2" placeholder="Confirmar contraseña" required>
+                        <i class="fa-solid fa-eye toggle-password" data-target="emp-password2"></i>
+                    </div>
+                    <p class="error-msg" id="emp-pass-error">Las contraseñas no coinciden.</p>
+
+                    <div class="terms">
+                        <input type="checkbox" id="emp-terms">
+                        <label for="emp-terms">
+                            Acepto los <a href="#">Términos</a> y la <a href="#">Política de Privacidad</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Crear cuenta</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    // ---- Funciones de navegación entre estados ----
+    // Muestra el formulario según el rol elegido (candidato o empresa).
+    window.elegirRol = function (rol) {
+        var r = document.getElementById("step-role");
+        var c = document.getElementById("step-candidato");
+        var e = document.getElementById("step-empresa");
+        if (!r || !c || !e) {
+            console.warn("[register] No se encontraron los contenedores de pasos.");
+            return;
+        }
+        r.style.display = "none";
+        c.style.display = (rol === "candidato") ? "block" : "none";
+        e.style.display = (rol === "empresa") ? "block" : "none";
+        console.log("[register] Rol elegido:", rol);
+    };
+
+    // Regresa a la pantalla de selección de rol.
+    window.volverARol = function () {
+        var r = document.getElementById("step-role");
+        var c = document.getElementById("step-candidato");
+        var e = document.getElementById("step-empresa");
+        if (!r || !c || !e) return;
+        c.style.display = "none";
+        e.style.display = "none";
+        r.style.display = "block";
+    };
+
+    // ---- Engancha los clics de las tarjetas de rol y los botones "Volver" ----
+    // (No dependemos de onclick en el HTML: lo hacemos aquí por código.)
+    function engancharBotonesRol() {
+        var tarjetas = document.querySelectorAll(".role-card[data-rol]");
+        console.log("[register] Tarjetas de rol encontradas:", tarjetas.length);
+        tarjetas.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                window.elegirRol(this.getAttribute("data-rol"));
+            });
+        });
+
+        document.querySelectorAll(".btn-volver").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                window.volverARol();
+            });
+        });
+    }
+
+    // ---- Inicializa los listeners de la vista ----
+    function initRegister() {
+        var apiBase = (typeof API_URL !== "undefined") ? API_URL : "http://localhost:5000";
+
+        engancharBotonesRol();
+
+        // Toggle mostrar/ocultar contraseña
+        document.querySelectorAll("#step-candidato .toggle-password, #step-empresa .toggle-password")
+            .forEach(function (icon) {
+                icon.addEventListener("click", function () {
+                    var input = document.getElementById(this.dataset.target);
+                    if (!input) return;
+                    if (input.type === "password") {
+                        input.type = "text";
+                        this.classList.remove("fa-eye");
+                        this.classList.add("fa-eye-slash");
+                    } else {
+                        input.type = "password";
+                        this.classList.remove("fa-eye-slash");
+                        this.classList.add("fa-eye");
+                    }
+                });
+            });
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function enviarRegistro(payload, btnSubmit) {
+            btnSubmit.textContent = "Creando cuenta...";
+            btnSubmit.disabled = true;
+            fetch(apiBase + "/api/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(payload)
+            })
+            .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+            .then(function (r) {
+                if (r.ok) {
+                    alert("¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.");
+                    navegarA("login");
+                } else {
+                    alert(r.d.error || "Error al crear la cuenta.");
+                }
+            })
+            .catch(function (err) {
+                alert("No se pudo conectar con el servidor. ¿Está corriendo Flask?");
+                console.error(err);
+            })
+            .finally(function () {
+                btnSubmit.textContent = "Crear cuenta";
+                btnSubmit.disabled = false;
+            });
+        }
+
+        // ---- Formulario PERSONA (candidato) ----
+        var formCand = document.getElementById("formCandidato");
+        if (formCand) {
+            formCand.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var nombre    = document.getElementById("cand-nombre").value.trim();
+                var apellido  = document.getElementById("cand-apellido").value.trim();
+                var correo    = document.getElementById("cand-correo").value.trim();
+                var password  = document.getElementById("cand-password").value.trim();
+                var password2 = document.getElementById("cand-password2").value.trim();
+                var terms     = document.getElementById("cand-terms").checked;
+
+                document.getElementById("cand-correo-error").classList.remove("show");
+                document.getElementById("cand-pass-error").classList.remove("show");
+                document.getElementById("cand-correo").classList.remove("input-error");
+                document.getElementById("cand-password2").classList.remove("input-error");
+
+                var valid = true;
+                if (!nombre || !apellido) { alert("Ingresa nombre y apellido."); valid = false; }
+                if (!emailRegex.test(correo)) {
+                    document.getElementById("cand-correo-error").classList.add("show");
+                    document.getElementById("cand-correo").classList.add("input-error");
+                    valid = false;
+                }
+                if (password !== password2 || !password) {
+                    document.getElementById("cand-pass-error").classList.add("show");
+                    document.getElementById("cand-password2").classList.add("input-error");
+                    valid = false;
+                }
+                if (!terms) { alert("Debes aceptar los términos."); valid = false; }
+                if (!valid) return;
+
+                enviarRegistro(
+                    { rol: "candidato", correo: correo, password: password, nombre: nombre, apellido: apellido },
+                    this.querySelector(".btn-submit")
+                );
+            });
+        }
+
+        // ---- Formulario EMPRESA ----
+        var formEmp = document.getElementById("formEmpresa");
+        if (formEmp) {
+            formEmp.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var nombre_empresa = document.getElementById("emp-nombre").value.trim();
+                var descripcion    = document.getElementById("emp-descripcion").value.trim();
+                var correo         = document.getElementById("emp-correo").value.trim();
+                var password       = document.getElementById("emp-password").value.trim();
+                var password2      = document.getElementById("emp-password2").value.trim();
+                var terms          = document.getElementById("emp-terms").checked;
+
+                document.getElementById("emp-correo-error").classList.remove("show");
+                document.getElementById("emp-pass-error").classList.remove("show");
+                document.getElementById("emp-correo").classList.remove("input-error");
+                document.getElementById("emp-password2").classList.remove("input-error");
+
+                var valid = true;
+                if (!nombre_empresa) { alert("Ingresa el nombre de la empresa."); valid = false; }
+                if (!emailRegex.test(correo)) {
+                    document.getElementById("emp-correo-error").classList.add("show");
+                    document.getElementById("emp-correo").classList.add("input-error");
+                    valid = false;
+                }
+                if (password !== password2 || !password) {
+                    document.getElementById("emp-pass-error").classList.add("show");
+                    document.getElementById("emp-password2").classList.add("input-error");
+                    valid = false;
+                }
+                if (!terms) { alert("Debes aceptar los términos."); valid = false; }
+                if (!valid) return;
+
+                enviarRegistro(
+                    { rol: "empresa", correo: correo, password: password, nombre_empresa: nombre_empresa, descripcion: descripcion },
+                    this.querySelector(".btn-submit")
+                );
+            });
+        }
+    }
+
+    // Exponer también como init_register por si el router lo llama
+    window.init_register = initRegister;
+
+    // Auto-inicialización: corre apenas exista el formulario en el DOM,
+    // sin depender de que el router ejecute este script.
+    if (document.getElementById("formCandidato")) {
+        initRegister();
+    } else {
+        // Reintenta brevemente por si el DOM aún se está pintando
+        var intentos = 0;
+        var t = setInterval(function () {
+            intentos++;
+            if (document.getElementById("formCandidato")) {
+                clearInterval(t);
+                initRegister();
+            } else if (intentos > 20) {
+                clearInterval(t);
+            }
+        }, 50);
+    }
+})();
+</script>

@@ -1,0 +1,43 @@
+<!-- ====================================================
+     PLANTILLA para una pantalla nueva.
+     CÓMO USARLA:
+       1. Copia este archivo:  views/_plantilla.html  ->  views/miPantalla.html
+       2. Renombra la función:  init__plantilla  ->  init_miPantalla
+       3. Registra la ruta en  public/js/router.js:
+             "miPantalla": "views/miPantalla.html"
+       4. Navega con  navegarA("miPantalla")  o el hash  #miPantalla
+     ==================================================== -->
+<div class="auth-container">
+    <div class="form-side" style="flex: 1 1 100%;">
+        <div class="form-wrapper">
+
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/>
+                </svg>
+            </div>
+
+            <h2>Título de la pantalla</h2>
+            <p class="subtitle">Subtítulo descriptivo</p>
+
+            <!-- Tu contenido aquí -->
+            <p style="text-align:center;color:#888;font-size:0.85rem;margin-bottom:18px;">
+                Reemplaza este bloque con el contenido de tu pantalla.
+            </p>
+
+            <button type="button" class="btn-submit" onclick="navegarA('login')">
+                Volver al login
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<script>
+// El router llama a window["init_<nombreVista>"] tras inyectar el HTML.
+function init__plantilla() {
+    // Aquí van addEventListener, fetch al backend, etc.
+    // Ejemplo:
+    // const res = await fetch(`${API_URL}/api/algo`, { credentials: "include" });
+}
+</script>
