@@ -1,0 +1,759 @@
+/* ============================================================
+   TalentBoard - Estilos compartidos
+   Usado por TODAS las vistas cargadas en #app
+   ============================================================ */
+
+:root {
+    --bg-color: #f0ede8;
+    --card-bg: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #888888;
+    --accent-green: #7a936b;
+    --accent-green-hover: #6b8260;
+    --input-bg: #fafaf8;
+    --input-border: #e0ddd8;
+    --error: #c0504f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ---- Contenedor de cada pantalla ---- */
+.auth-container {
+    display: flex;
+    width: 860px;
+    max-width: 100%;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+    min-height: 540px;
+}
+
+/* ---- Panel izquierdo: ilustración ---- */
+.illustration-side {
+    flex: 1;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.illustration-svg { width: 100%; max-width: 300px; }
+
+/* ---- Panel derecho: formulario ---- */
+.form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 44px;
+}
+.form-wrapper { width: 100%; max-width: 360px; }
+
+/* ---- Logo estrella ---- */
+.logo { text-align: center; margin-bottom: 14px; }
+.logo svg {
+    width: 28px; height: 28px;
+    fill: none;
+    stroke: var(--accent-green);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+}
+
+/* ---- Filas (dos campos en línea) ---- */
+.row { display: flex; gap: 12px; }
+.row .input-group { flex: 1; }
+
+/* ---- Inputs ---- */
+.input-group { position: relative; margin-bottom: 14px; }
+.input-group i.field-icon {
+    position: absolute;
+    left: 13px; top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 15px;
+    pointer-events: none;
+}
+.input-group .toggle-password {
+    position: absolute;
+    left: auto; right: 13px; top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 15px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: color 0.2s;
+}
+.input-group .toggle-password:hover { color: var(--accent-green); }
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 40px 12px 38px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: var(--input-bg);
+    outline: none;
+    transition: border 0.2s;
+}
+.input-group textarea {
+    resize: vertical;
+    min-height: 70px;
+    padding-top: 12px;
+}
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--accent-green);
+    background: #fff;
+}
+.input-group input::placeholder,
+.input-group textarea::placeholder { color: #bbb; }
+
+/* ---- Errores inline ---- */
+.input-error { border-color: #e07a7a !important; }
+.error-msg {
+    font-size: 0.72rem;
+    color: var(--error);
+    margin-top: -8px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+    display: none;
+}
+.error-msg.show { display: block; }
+
+/* ---- Extra options ---- */
+.extra-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    font-size: 0.8rem;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.remember-me input[type="checkbox"] {
+    accent-color: var(--accent-green);
+    width: 14px; height: 14px;
+}
+.forgot-password {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.forgot-password:hover { color: var(--accent-green); }
+
+/* ---- Terms ---- */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-top: 2px;
+}
+.terms input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--accent-green);
+    width: 14px; height: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.terms label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1.5;
+}
+.terms label a {
+    color: var(--accent-green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ---- Botones ---- */
+.btn-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--accent-green);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+}
+.btn-submit:hover { background: var(--accent-green-hover); }
+.btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.separator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e5e0;
+}
+
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s;
+    margin-bottom: 20px;
+}
+.btn-google:hover { background: var(--input-bg); }
+.btn-google img { width: 18px; height: 18px; }
+
+/* ---- Texto cambio de pantalla ---- */
+.switch-text {
+    text-align: center;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+}
+.switch-text a {
+    color: var(--text-main);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.switch-text a:hover { color: var(--accent-green); }
+
+/* ============================================================
+   Tarjetas de selección de rol (Empresa / Persona)
+   ============================================================ */
+.role-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.role-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1.5px solid var(--input-border);
+    border-radius: 12px;
+    background: var(--input-bg);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.1s;
+    text-align: left;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+.role-card:hover {
+    border-color: var(--accent-green);
+    background: #fff;
+}
+.role-card:active { transform: scale(0.99); }
+.role-card .role-icon {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #eef0ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-green);
+    font-size: 18px;
+}
+.role-card .role-info { flex: 1; }
+.role-card .role-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+.role-card .role-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+.role-card .role-arrow {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* ---- Botón "volver" (texto pequeño tipo link) ---- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-bottom: 14px;
+    padding: 0;
+    transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent-green); }
+
+/* ---- Responsivo ---- */
+@media (max-width: 768px) {
+    .auth-container { flex-direction: column; min-height: auto; }
+    .illustration-side { display: none; }
+    .form-side { padding: 40px 24px; }
+}
+
+/* ============================================================
+   DASHBOARD (candidato y empresa)
+   Layout: sidebar fija + área de contenido
+   ============================================================ */
+
+/* Reset del centrado del body solo cuando hay dashboard */
+body.dashboard-mode {
+    display: block;
+    align-items: stretch;
+    justify-content: flex-start;
+    background: #f7f5f2;
+    padding: 0;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    width: 240px;
+    background: #fff;
+    border-right: 1px solid #ece9e4;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 18px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex-shrink: 0;
+}
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px 28px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+.sidebar-brand svg {
+    width: 26px; height: 26px;
+    fill: none;
+    stroke: var(--accent-green);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.15s, color 0.15s;
+}
+.nav-item i { width: 18px; text-align: center; font-size: 15px; }
+.nav-item:hover { background: #f4f2ee; color: var(--text-main); }
+.nav-item.active { background: #eef0ea; color: var(--accent-green); font-weight: 600; }
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 14px;
+    border-top: 1px solid #ece9e4;
+}
+
+/* ---- Área de contenido ---- */
+.content {
+    flex: 1;
+    padding: 36px 44px;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+.content-header { margin-bottom: 26px; }
+.content-header h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+.content-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ---- Tarjetas de estadísticas ---- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.stat-card {
+    background: #fff;
+    border: 1px solid #ece9e4;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.stat-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: #eef0ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-green);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.stat-info .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--text-main); line-height: 1.1; }
+.stat-info .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ---- Barra de búsqueda ---- */
+.search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+.search-bar .search-field {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+.search-bar .search-field i {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 14px;
+}
+.search-bar .search-field input {
+    width: 100%;
+    padding: 12px 14px 12px 38px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    outline: none;
+}
+.search-bar .search-field input:focus { border-color: var(--accent-green); }
+.btn-primary {
+    padding: 12px 24px;
+    background: var(--accent-green);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent-green-hover); }
+.btn-secondary {
+    padding: 11px 20px;
+    background: #fff;
+    color: var(--text-main);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-secondary:hover { background: #f7f5f2; }
+
+/* ---- Lista de vacantes (tarjetas) ---- */
+.vacancy-list { display: flex; flex-direction: column; gap: 14px; }
+.vacancy-card {
+    background: #fff;
+    border: 1px solid #ece9e4;
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.vacancy-card:hover {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border-color: #ddd8d0;
+}
+.vacancy-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.vacancy-logo {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: #eef0ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+.vacancy-headtext { flex: 1; }
+.vacancy-title { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+.vacancy-company { font-size: 0.85rem; color: var(--text-muted); }
+.vacancy-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+.vacancy-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #f4f2ee;
+    color: #777;
+}
+.tag.salary { background: #eef0ea; color: var(--accent-green); font-weight: 600; }
+.vacancy-actions { display: flex; gap: 10px; }
+
+/* ---- Badges de estado (postulaciones) ---- */
+.badge {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+.badge.pendiente { background: #fdf4e3; color: #b6822a; }
+.badge.revisado  { background: #e8eef7; color: #3a6ea5; }
+.badge.aceptado  { background: #e7f3ea; color: #3a8a52; }
+.badge.rechazado { background: #f7e8e8; color: #b04a4a; }
+
+/* ---- Formulario en panel (crear vacante) ---- */
+.panel {
+    background: #fff;
+    border: 1px solid #ece9e4;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+.panel h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: var(--text-main);
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.form-field { margin-bottom: 16px; }
+.form-field label {
+    display: block;
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.form-field input,
+.form-field textarea,
+.form-field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: 'Poppins', sans-serif;
+    background: #fafaf8;
+    outline: none;
+    transition: border 0.2s;
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus { border-color: var(--accent-green); background: #fff; }
+.form-field textarea { resize: vertical; min-height: 80px; }
+
+/* ---- Empty state ---- */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+}
+.empty-state i { font-size: 38px; color: #d8d3ca; margin-bottom: 14px; }
+.empty-state p { font-size: 0.9rem; }
+
+/* ---- Tabla simple (candidatos / postulaciones) ---- */
+.simple-table { width: 100%; border-collapse: collapse; }
+.simple-table th {
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 1px solid #ece9e4;
+}
+.simple-table td {
+    padding: 14px;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    border-bottom: 1px solid #f4f2ee;
+}
+.simple-table tr:last-child td { border-bottom: none; }
+
+/* ---- Loading ---- */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ---- Responsive dashboard ---- */
+@media (max-width: 820px) {
+    .sidebar {
+        width: 64px;
+        padding: 20px 8px;
+    }
+    .sidebar-brand span,
+    .nav-item span { display: none; }
+    .sidebar-brand { justify-content: center; padding: 0 0 20px; }
+    .nav-item { justify-content: center; padding: 12px; }
+    .content { padding: 24px 18px; }
+    .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Mapas (Leaflet + OpenStreetMap)
+   ============================================================ */
+.mapa-grande {
+    height: 520px;
+    border-radius: 16px;
+    border: 1px solid #ece9e4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    z-index: 0; /* que los popups no tapen el sidebar */
+}
+.mapa-mini {
+    height: 300px;
+    border-radius: 12px;
+    border: 1px solid var(--input-border);
+    z-index: 0;
+}
+.mapa-info {
+    display: block;
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+.leaflet-container { font-family: 'Poppins', sans-serif; }
+
+/* Fila: input de dirección + botón "Buscar ubicación" */
+.geo-row { display: flex; gap: 10px; }
+.geo-row input { flex: 1; }
+.geo-row .btn-secondary { white-space: nowrap; }
+
+/* Mensaje de estado de la geocodificación */
+.geo-status {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    min-height: 1.1em;
+}
+.geo-status.ok    { color: var(--accent-green); }
+.geo-status.error { color: var(--error); }
+
+/* Popup de vacante dentro del mapa */
+.popup-vacante { min-width: 190px; }
+.popup-titulo {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+.popup-empresa {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+.popup-vacante .tag.salary { display: inline-block; margin-bottom: 10px; }
+.popup-vacante .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 820px) {
+    .mapa-grande { height: 400px; }
+    .geo-row { flex-direction: column; }
+}

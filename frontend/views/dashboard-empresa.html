@@ -1,0 +1,192 @@
+<!-- ====================================================
+     VISTA: Dashboard EMPRESA
+     Secciones: inicio (stats), mis vacantes, crear vacante, candidatos
+     ==================================================== -->
+<div class="layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <svg viewBox="0 0 24 24"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg>
+            <span>TalentBoard</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-seccion="inicio">
+                <i class="fa-solid fa-house"></i><span>Inicio</span>
+            </button>
+            <button class="nav-item" data-seccion="vacantes">
+                <i class="fa-solid fa-briefcase"></i><span>Mis vacantes</span>
+            </button>
+            <button class="nav-item" data-seccion="crear">
+                <i class="fa-solid fa-plus"></i><span>Crear vacante</span>
+            </button>
+            <button class="nav-item" data-seccion="empresa">
+                <i class="fa-solid fa-building"></i><span>Mi empresa</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="nav-item" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i><span>Cerrar sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== CONTENIDO ===== -->
+    <main class="content">
+
+        <!-- ---------- SECCIÓN: INICIO (STATS) ---------- -->
+        <section id="sec-inicio">
+            <div class="content-header">
+                <h1 id="saludo-empresa">Dashboard</h1>
+                <p>Resumen de tu actividad en TalentBoard.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="stat-vacantes">0</div>
+                        <div class="stat-label">Vacantes activas</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="stat-postulaciones">0</div>
+                        <div class="stat-label">Postulaciones totales</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="stat-pendientes">0</div>
+                        <div class="stat-label">Por revisar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Tus vacantes recientes</h3>
+                <div id="vacantesRecientes">
+                    <div class="loading">Cargando…</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: MIS VACANTES ---------- -->
+        <section id="sec-vacantes" style="display:none;">
+            <div class="content-header">
+                <h1>Mis vacantes</h1>
+                <p>Gestiona las vacantes que has publicado.</p>
+            </div>
+            <div id="listaMisVacantes" class="vacancy-list">
+                <div class="loading">Cargando…</div>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: CREAR VACANTE ---------- -->
+        <section id="sec-crear" style="display:none;">
+            <div class="content-header">
+                <h1>Crear vacante</h1>
+                <p>Completa la información para publicar tu vacante.</p>
+            </div>
+
+            <div class="panel">
+                <h3>Información general</h3>
+                <form id="formCrearVacante">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Título de la vacante *</label>
+                            <input type="text" id="vac-titulo" placeholder="Ej. Desarrollador Frontend" required>
+                        </div>
+                        <div class="form-field">
+                            <label>Rango salarial (mensual)</label>
+                            <input type="number" id="vac-salario" placeholder="Ej. 25000" min="0" step="any">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Descripción de la vacante *</label>
+                        <textarea id="vac-descripcion" placeholder="Describe responsabilidades, requisitos, modalidad, ubicación…" required></textarea>
+                    </div>
+
+                    <!-- ===== Ubicación: API externa Nominatim (OpenStreetMap) ===== -->
+                    <div class="form-field">
+                        <label>Dirección de la vacante (opcional, para el mapa)</label>
+                        <div class="geo-row">
+                            <input type="text" id="vac-direccion"
+                                   placeholder="Ej. Av. 5 de Febrero 1234, Querétaro, México">
+                            <button type="button" class="btn-secondary" id="btnGeocodificar">
+                                <i class="fa-solid fa-location-crosshairs"></i> Buscar ubicación
+                            </button>
+                        </div>
+                        <small id="geo-status" class="geo-status"></small>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Ubicación en el mapa (haz clic para colocar o ajustar el pin)</label>
+                        <div id="mapaEmpresa" class="mapa-mini"></div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Latitud (se llena automáticamente)</label>
+                            <input type="number" id="vac-lat" placeholder="—" step="any" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label>Longitud (se llena automáticamente)</label>
+                            <input type="number" id="vac-lng" placeholder="—" step="any" readonly>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Publicar vacante</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: MI EMPRESA ---------- -->
+        <section id="sec-empresa" style="display:none;">
+            <div class="content-header">
+                <h1>Mi empresa</h1>
+                <p>Información de tu empresa.</p>
+            </div>
+            <div class="panel">
+                <h3>Datos de la empresa</h3>
+                <form id="formPerfilEmpresa">
+                    <div class="form-field">
+                        <label>Nombre de la empresa</label>
+                        <input type="text" id="emp-perfil-nombre" placeholder="Nombre">
+                    </div>
+                    <div class="form-field">
+                        <label>Descripción</label>
+                        <textarea id="emp-perfil-descripcion" placeholder="Describe tu empresa"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label>Correo</label>
+                        <input type="email" id="emp-perfil-correo" disabled>
+                    </div>
+                    <button type="submit" class="btn-primary">Guardar cambios</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ---------- SECCIÓN: CANDIDATOS DE UNA VACANTE (overlay simple) ---------- -->
+        <section id="sec-candidatos" style="display:none;">
+            <div class="content-header">
+                <button class="btn-secondary" id="btnVolverVacantes" style="margin-bottom:14px;">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a mis vacantes
+                </button>
+                <h1 id="candidatos-titulo">Candidatos</h1>
+                <p>Personas que se postularon a esta vacante.</p>
+            </div>
+            <div class="panel">
+                <div id="listaCandidatos">
+                    <div class="loading">Cargando…</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>

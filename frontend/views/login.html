@@ -1,0 +1,135 @@
+<!-- ====================================================
+     VISTA: Login
+     ==================================================== -->
+<div class="auth-container">
+
+    <!-- LEFT: Ilustración -->
+    <div class="illustration-side">
+        <svg class="illustration-svg" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 250 C60 140, 160 110, 160 110" stroke="#f0eae1" stroke-width="2" fill="none"/>
+            <path d="M120 250 A 50 50 0 0 1 220 250" fill="#f5ede2" opacity="0.7"/>
+            <path d="M200 250 L200 130 A 45 45 0 0 1 290 130 L290 250" stroke="#8c8275" stroke-width="1" fill="none"/>
+            <path d="M190 190 Q205 180 220 190 Q235 180 245 195" stroke="#8c8275" stroke-width="1"/>
+            <path d="M240 140 Q255 130 270 140 Q285 130 295 145" stroke="#8c8275" stroke-width="1"/>
+            <line x1="50" y1="250" x2="350" y2="250" stroke="#8c8275" stroke-width="1"/>
+            <path d="M70 250 L70 210 Q70 200 80 200 L80 200 Q90 200 90 210 L90 250 Z" fill="#f5ede2" stroke="#8c8275" stroke-width="1"/>
+            <line x1="80" y1="200" x2="80" y2="120" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 170 Q60 160 62 145 Q75 155 80 170" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 150 Q100 140 98 125 Q85 135 80 150" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 130 Q60 120 62 105 Q75 115 80 130" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <path d="M80 110 Q90 95 80 95 Q70 95 80 110" fill="#a4b3a2" stroke="#8c8275" stroke-width="1"/>
+            <rect x="110" y="215" width="30" height="35" rx="6" fill="#82947e"/>
+            <path d="M140 222 C148 222 148 238 140 238" stroke="#8c8275" stroke-width="1.5" fill="none"/>
+            <path d="M120 205 Q123 195 120 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+            <path d="M128 205 Q131 195 128 185" stroke="#8c8275" stroke-width="1" fill="none"/>
+            <path d="M152 248 L210 248 L207 252 L145 252 Z" fill="#e8e2da" stroke="#8c8275" stroke-width="1"/>
+            <path d="M210 248 L175 175 L245 175 L275 248 Z" fill="#fdfcfb" stroke="#8c8275" stroke-width="1"/>
+            <circle cx="225" cy="210" r="4" stroke="#8c8275" stroke-width="1" fill="none"/>
+        </svg>
+    </div>
+
+    <!-- RIGHT: Formulario -->
+    <div class="form-side">
+        <div class="form-wrapper">
+
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/>
+                </svg>
+            </div>
+
+            <h2>Welcome back</h2>
+            <p class="subtitle">Sign in to continue</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fa-regular fa-user field-icon"></i>
+                    <input type="text" id="login-correo" placeholder="Email or username" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-lock field-icon"></i>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <i class="fa-solid fa-eye toggle-password" data-target="login-password"></i>
+                </div>
+
+                <div class="extra-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Sign in</button>
+
+                <div class="separator">or</div>
+
+                <button type="button" class="btn-google">
+                    <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="Google Logo">
+                    Continue with Google
+                </button>
+
+                <div class="switch-text">
+                    Don't have an account? <a onclick="navegarA('register')">Sign up</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function init_login() {
+    // ---- Toggle mostrar/ocultar contraseña ----
+    document.querySelectorAll("#loginForm .toggle-password").forEach(function (icon) {
+        icon.addEventListener("click", function () {
+            const input = document.getElementById(this.dataset.target);
+            if (!input) return;
+            if (input.type === "password") {
+                input.type = "text";
+                this.classList.remove("fa-eye");
+                this.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                this.classList.remove("fa-eye-slash");
+                this.classList.add("fa-eye");
+            }
+        });
+    });
+
+    // ---- Envío del formulario ----
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const correo    = document.getElementById("login-correo").value.trim();
+        const password  = document.getElementById("login-password").value.trim();
+        const btnSubmit = this.querySelector(".btn-submit");
+
+        btnSubmit.textContent = "Signing in...";
+        btnSubmit.disabled = true;
+
+        try {
+            const res = await fetch(`${API_URL}/api/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({ correo, password })
+            });
+            const data = await res.json();
+
+            if (res.ok) {
+                alert(`¡Bienvenido! Rol: ${data.rol}`);
+                // Cuando crees el dashboard, navega así:
+                // navegarA("dashboard");
+            } else {
+                alert(data.error || "Error al iniciar sesión");
+            }
+        } catch (err) {
+            alert("No se pudo conectar con el servidor. ¿Está corriendo Flask?");
+            console.error(err);
+        } finally {
+            btnSubmit.textContent = "Sign in";
+            btnSubmit.disabled = false;
+        }
+    });
+}
+</script>
