@@ -178,6 +178,7 @@ GET    /api/me                    datos + estadísticas del usuario logueado
 PUT    /api/perfil/candidato      actualizar perfil candidato
 PUT    /api/perfil/empresa        actualizar perfil empresa
 ```
+<<<<<<< HEAD
 
 ## 🗺️ APIs externas: mapa de vacantes (Leaflet + OpenStreetMap + Nominatim)
 
@@ -207,3 +208,5 @@ El proyecto consume **dos APIs externas**, sin necesidad de API key ni registro:
 - Nominatim se llama directo desde el navegador (permite CORS). Su política de
   uso pide máximo ~1 petición por segundo: suficiente para esta app.
 - Requiere internet para cargar los tiles del mapa y la geocodificación.
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd

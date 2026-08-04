@@ -321,6 +321,7 @@ function formatoSalario(s) {
 }
 
 /* ============================================================
+<<<<<<< HEAD
    MAPAS — APIs externas consumidas:
      1) Leaflet + tiles de OpenStreetMap  -> dibuja los mapas
      2) Nominatim (OpenStreetMap)         -> geocodificación:
@@ -492,6 +493,8 @@ function limpiarMapaEmpresa() {
 }
 
 /* ============================================================
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd
    DASHBOARD CANDIDATO
    ============================================================ */
 function initDashboardCandidato() {
@@ -499,6 +502,7 @@ function initDashboardCandidato() {
     activarNavSecciones("candidato");
     activarLogout();
 
+<<<<<<< HEAD
     // El SPA reemplaza el DOM al navegar: descartar el mapa anterior
     mapaCandidato = null;
     capaMarcadores = null;
@@ -510,6 +514,8 @@ function initDashboardCandidato() {
         b.addEventListener("click", cargarMapaVacantes);
     });
 
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd
     // Cargar datos del usuario + perfil
     fetch(API_URL + "/api/me", { credentials: "include" })
         .then(function (res) {
@@ -696,6 +702,7 @@ function initDashboardEmpresa() {
     activarNavSecciones("empresa");
     activarLogout();
 
+<<<<<<< HEAD
     // El SPA reemplaza el DOM al navegar: descartar el mapa anterior
     mapaEmpresa = null;
     marcadorEmpresa = null;
@@ -716,6 +723,8 @@ function initDashboardEmpresa() {
         if (e.key === "Enter") { e.preventDefault(); geocodificarDireccion(); }
     });
 
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd
     // Cargar datos + stats
     fetch(API_URL + "/api/me", { credentials: "include" })
         .then(function (res) {
@@ -782,7 +791,10 @@ function initDashboardEmpresa() {
                 if (r.ok) {
                     alert("¡Vacante publicada!");
                     formCrear.reset();
+<<<<<<< HEAD
                     limpiarMapaEmpresa();
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd
                     cargarMisVacantes("listaMisVacantes");
                     cargarMisVacantes("vacantesRecientes");
                 } else {

@@ -691,6 +691,7 @@ body.dashboard-mode {
     .content { padding: 24px 18px; }
     .form-grid { grid-template-columns: 1fr; }
 }
+<<<<<<< HEAD
 
 /* ============================================================
    Mapas (Leaflet + OpenStreetMap)
@@ -757,3 +758,5 @@ body.dashboard-mode {
     .mapa-grande { height: 400px; }
     .geo-row { flex-direction: column; }
 }
+=======
+>>>>>>> a8876d3bede828d44d23fc8614b9c5f8e4bd40cd
